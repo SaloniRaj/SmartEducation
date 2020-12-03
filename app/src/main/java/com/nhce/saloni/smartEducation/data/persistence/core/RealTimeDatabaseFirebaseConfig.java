@@ -18,6 +18,6 @@ public class RealTimeDatabaseFirebaseConfig<T> {
         this.databaseReference = FirebaseDatabase.getInstance().getReference().child(pathFromRootNode);
     }
 
-    protected void setChildEventListener(final Class<T> serializeToClass){
+    protected void setChildEventListener(final Class serializeToClass, String LeafNodeTitleValue) {
     }
 }

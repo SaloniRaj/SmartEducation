@@ -24,4 +24,38 @@
         android:text="list"
         app:layout_constraintStart_toEndOf="@+id/MovieDeals"
         app:layout_constraintTop_toTopOf="@+id/MovieDeals" />
+
+    <Button
+        android:id="@+id/addRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha=".8"
+        android:background="@drawable/btn_gradient"
+        android:onClick="goToAddRow"
+        android:text="add Row"
+        android:textSize="18sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.647" />
+
+
+    <Button
+        android:id="@+id/SubjectChannel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:alpha=".8"
+        android:background="@drawable/btn_gradient"
+        android:onClick="goToSubjectChannel"
+        android:text="Subject Channel"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addRow" />
 </androidx.constraintlayout.widget.ConstraintLayout>

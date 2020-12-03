@@ -1,71 +1,57 @@
 package com.nhce.saloni.smartEducation;
 
-import androidx.annotation.NonNull;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.Toast;
+import com.nhce.saloni.smartEducation.utility.Utility;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import com.nhce.saloni.smartEducation.data.model.TVSerial;
-import com.nhce.saloni.smartEducation.data.table.TVSeries;
+import static android.widget.Toast.LENGTH_SHORT;
+import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
-
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
-    EditText txtTitle,txtDescription, txtPrice;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.databaseReference  = FirebaseDatabase.getInstance().getReference();
-
-        txtTitle = (EditText) findViewById(R.id.txtTitle);
-        txtDescription = (EditText) findViewById(R.id.txtDescription);
-        txtPrice = (EditText) findViewById(R.id.txtPrice);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.save_button:
-                return createAndAddMovieToDatabase();
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    /*
+    public void GoToLogin(View view){
+        makeText(getApplicationContext(), "Login Button Clicked", LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
-
-    private Boolean createAndAddMovieToDatabase() {
-        //TODO:  Check for Empty  DataRow;
-        Toast.makeText(
-                this,
-                TVSeries.getInstance().insertDataRow(new TVSerial(txtTitle.getText().toString(), txtDescription.getText().toString(), txtPrice.getText().toString(), ""))
-                        ? "Deal Saved"
-                        : "Deal couldn't be Saved",
-                Toast.LENGTH_LONG).show();
-        clean();
-        return true;
+    public void GoToSignUp(View view){
+        makeText(getApplicationContext(), "Register Button Clicked", LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+        startActivity(intent);
     }
+    public void Skipped(View view){
+        makeText(getApplicationContext(), "Skipped", LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, TeamsActivity.class);
+        startActivity(intent);
+    }*/
 
-    private void clean() {
-        txtTitle.setText("");
-        txtDescription.setText("");
-        txtPrice.setText("");
-        txtTitle.requestFocus();
+    public void GoToLogin(View view){
+        makeText(getApplicationContext(), "Enter Login Credentials ", LENGTH_SHORT).show();
+        //Redirect Activity to Teams
+        Utility.redirectActivity(this,LoginActivity.class);
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.save_menu, menu);
-        return true;
+    public void goToRegistration(View view){
+        makeText(getApplicationContext(), "Register Button Clicked", LENGTH_SHORT).show();
+        //Redirect Activity to SignUp
+        Utility.redirectActivity(this,RegisterActivity.class);
     }
-
+    public void goToDateActivity(View view) {
+        makeText(getApplicationContext(), "Date Activity", LENGTH_SHORT).show();
+        //Redirect Activity to Date
+        Utility.redirectActivity(this,DateActivity.class);
+    }
+    public void goToSubjectChannel(View view){
+        makeText(getApplicationContext(), "Skipped", LENGTH_SHORT).show();
+        //Redirect Activity to Teams
+        Utility.redirectActivity(this,SubjectActivity.class);
+    }
 }
